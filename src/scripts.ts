@@ -101,6 +101,31 @@ hoverMode.addEventListener('mouseleave', () => {
     hoverMode.style.backgroundColor = 'Aqua';
 });
 
+// 9. optional 
+
+function startCountdown() {
+    var counter = 0;
+    var div5 = this;
+
+    function updateCounter() {
+        if (counter <= 10) {
+            div5.innerText = counter;
+            counter++;
+        }
+    }
+
+    var intervalId = setInterval(updateCounter, 1000);
+
+    div5.onmouseleave = function () {
+        clearInterval(intervalId);
+        div5.innerText = '0';
+    };
+}
+
+const hoverCount = document.getElementById('div5');
+hoverCount.addEventListener('mouseenter', startCountdown);
+
+// 10. optional 
 
 
 
