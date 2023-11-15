@@ -1,8 +1,28 @@
-import $ from 'jquery';
-import sum from './utils/sum/sum';
 
-console.log('Ready for coding');
+document.getElementById('btn1').onclick = function(){
+    document.getElementById('div1').style.backgroundColor = 'Yellow';
+}
 
-console.log('Body jQuery node:', $('body'));
-console.log('Body javascript node:', document.querySelector('body'));
-console.log('2 + 3 =', sum(2, 3));
+document.getElementById('btn2').onclick = function(){
+    document.getElementById('div2').innerText = 'Success';
+}
+
+document.getElementById('btn3').onclick = function(){
+    document.getElementById('div3').style.display = 'none';
+}
+
+
+
+var switchButton = document.getElementById('btn4');
+var div4 = document.getElementById('div4');
+
+var isNone = false;
+const changeDisplay = () => {
+    if (isNone) {
+        div4.style.display = 'none';
+    } else {
+        div4.style.display = 'block';
+    }
+    isNone =!isNone;
+}
+switchButton.onclick = changeDisplay;
