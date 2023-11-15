@@ -29,8 +29,11 @@
         </div>
         <div class="input-container">
             <button class="btn btn7" id="btn7">Button 7</button>
-            <input id="textInput" type="text" placeholder="Input placeholder">
-            <div class="textOutput">Output</div>
+            <form name="myForm" action="/action_page.php" method="post">
+                <input type="text" name="text" id="copiedText" placeholder="placeholder text" onchange="copyText()">
+            </form>
+        
+            <div class="div div7" id="div7"></div>
         </div>
     </div>
     <script src="/scripts.js"></script>

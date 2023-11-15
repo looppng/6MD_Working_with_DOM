@@ -125,9 +125,4 @@ function startCountdown() {
 const hoverCount = document.getElementById('div5');
 hoverCount.addEventListener('mouseenter', startCountdown);
 
-// 10. optional 
-
-
-
-
-
+// 10. optional
