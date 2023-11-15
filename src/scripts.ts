@@ -52,7 +52,7 @@ const changeColor = () => {
 
 switchColors.onclick = changeColor;
 
-//6.
+// 6.
 
 const counter = document.getElementById('div6');
 const intervalButton = document.getElementById('btn6');
@@ -72,8 +72,34 @@ intervalButton.onclick = () => {
     interval = setInterval(updateCounter, 3000);
 }
 
-//7.
+// 7.
 
+const colorButton = document.getElementById('btn7');
+
+const colorDivs = () => {
+    var divs = document.querySelectorAll('.div-container .div');
+    divs.forEach(function(div) {
+        const divStyle = div as HTMLElement;
+        divStyle.style.backgroundColor = '#18D5E1';
+    })
+};
+
+colorButton.addEventListener('click', () => {
+    document.body.style.backgroundColor = '#000000';
+});
+colorButton.addEventListener('click', colorDivs);
+
+// 8.
+
+const hoverMode = document.getElementById('div1');
+
+hoverMode.addEventListener('mouseenter', () => {
+    hoverMode.style.backgroundColor = 'Red';
+});
+
+hoverMode.addEventListener('mouseleave', () => {
+    hoverMode.style.backgroundColor = 'Aqua';
+});
 
 
 
