@@ -1,128 +1,159 @@
 // 1.
 
-document.getElementById('btn1').onclick = function(){
-    document.getElementById('div1').style.backgroundColor = 'Yellow';
+const div1 : HTMLDivElement = document.querySelector('.div1')
+const changeColor1 = () => {
+    div1.style.backgroundColor = 'Yellow';
 }
+
+document.querySelector('.button1').addEventListener('click', changeColor1);
+
 
 // 2.
 
-document.getElementById('btn2').onclick = function(){
-    document.getElementById('div2').innerText = 'Success';
+const div2 : HTMLDivElement = document.querySelector('.div2')
+const changeText = () => {
+    div2.innerText = 'Success'
 }
+
+document.querySelector('.button2').addEventListener('click', changeText)
+
 
 // 3.
 
-document.getElementById('btn3').onclick = function(){
-    document.getElementById('div3').style.display = 'none';
+const div3 : HTMLDivElement = document.querySelector('.div3')
+
+const hideDiv = () => {
+    div3.style.opacity = '0';
 }
+
+document.querySelector('.button3').addEventListener('click', hideDiv)
+
 
 // 4.
 
-const switchButton = document.getElementById('btn4');
-const div4 = document.getElementById('div4');
+const switchButton: HTMLButtonElement = document.querySelector('.button4')
+const div4 : HTMLDivElement = document.querySelector('.div4');
 
-var isNone = false;
+let isHidden = false;
 const changeDisplay = () => {
-    if (isNone) {
-        div4.style.display = 'none';
+    if (isHidden) {
+        div4.style.opacity = '1';
     } else {
-        div4.style.display = 'block';
+        div4.style.opacity = '0';
     }
-    isNone =!isNone;
-}
-switchButton.onclick = changeDisplay;
+    isHidden = !isHidden;
+};
+
+switchButton.addEventListener('click', changeDisplay)
+
 
 // 5.
 
-const switchColors = document.getElementById('btn5');
-const div5 = document.getElementById('div5');
+const button5 : HTMLButtonElement = document.querySelector('.button5');
+const div5 : HTMLDivElement  = document.querySelector('.div5');
 
-var colors = ['Red', 'Green', 'Blue', 'Magenta', 'Yellow'];
+const colors = ['Red', 'Green', 'Blue', 'Magenta', 'Yellow'];
+let currentColor = '';
 
 const getColor = () => {
-    var randomColor = Math.floor(Math.random() * colors.length);
+    const randomColor = Math.floor(Math.random() * colors.length);
     return colors[randomColor];
 }
 
 const changeColor = () => {
-    var randomColor = getColor();
-    div5.style.backgroundColor = randomColor;
-    switchColors.style.backgroundColor = randomColor;
+    let newColor = getColor();
+    while (newColor === currentColor) {
+        newColor = getColor()
+    }
+
+    div5.style.backgroundColor = newColor;
+
+    currentColor = newColor;
 }
 
-switchColors.onclick = changeColor;
+button5.onclick = changeColor;
+
 
 // 6.
 
-const counter = document.getElementById('div6');
-const intervalButton = document.getElementById('btn6');
+const div6 : HTMLDivElement = document.querySelector('.div6');
+const btn6 : HTMLButtonElement = document.querySelector('.button6');
 
-var count = 0;
-var interval: NodeJS.Timeout;
+let count = 0;
+let interval: NodeJS.Timeout;
 
-function updateCounter() {
+const intervalUpdate = () => {
+    clearInterval(interval)
+    interval = setInterval(updateCounter, 1000);
+}
+
+const updateCounter = () => {
     count++;
-    if (count > 10) {
-        count = 0;
+    if (count == 10) {
+        clearInterval(interval)
     }
-    counter.innerText = count.toString();
+    div6.innerText = count.toString();
 }
 
-intervalButton.onclick = () => {
-    interval = setInterval(updateCounter, 3000);
-}
+btn6.addEventListener('click', intervalUpdate)
+
 
 // 7.
 
-const colorButton = document.getElementById('btn7');
+const btn7 : HTMLButtonElement = document.querySelector('.button7');
+const allDivs : NodeListOf<HTMLDivElement> = document.querySelectorAll('.div');
+const bodyEl : HTMLBodyElement = document.querySelector('body')
 
 const colorDivs = () => {
-    var divs = document.querySelectorAll('.div-container .div');
-    divs.forEach(function(div) {
-        const divStyle = div as HTMLElement;
-        divStyle.style.backgroundColor = '#18D5E1';
+    allDivs.forEach((div) => {
+        div.style.backgroundColor = '#18D5E1';
     })
-};
+    bodyEl.style.backgroundColor = '#000000';
+}
 
-colorButton.addEventListener('click', () => {
-    document.body.style.backgroundColor = '#000000';
-});
-colorButton.addEventListener('click', colorDivs);
+btn7.addEventListener('click', colorDivs)
+
 
 // 8.
 
-const hoverMode = document.getElementById('div1');
-
-hoverMode.addEventListener('mouseenter', () => {
-    hoverMode.style.backgroundColor = 'Red';
+const hoverDiv : HTMLDivElement = document.querySelector('.div1');
+hoverDiv.addEventListener('mouseenter', () => {
+    hoverDiv.style.backgroundColor = 'Red';
+});
+hoverDiv.addEventListener('mouseleave', () => {
+    hoverDiv.style.backgroundColor = '#18D5E1';
 });
 
-hoverMode.addEventListener('mouseleave', () => {
-    hoverMode.style.backgroundColor = 'Aqua';
-});
 
-// 9. optional 
+// 9 - extra
 
-function startCountdown() {
-    var counter = 0;
-    var div5 = this;
+const countdownDiv: HTMLDivElement = document.querySelector('.div5');
 
-    function updateCounter() {
-        if (counter <= 10) {
-            div5.innerText = counter;
+countdownDiv.addEventListener('mouseenter', () => {
+    let counter = 0;
+
+
+    const updateCounter = () => {
+        if ( counter <= 10) {
+            countdownDiv.innerText = counter.toString();
             counter++;
         }
     }
 
-    var intervalId = setInterval(updateCounter, 1000);
+    const timer = setInterval(updateCounter, 1000)
 
-    div5.onmouseleave = function () {
-        clearInterval(intervalId);
-        div5.innerText = '0';
-    };
-}
+    countdownDiv.addEventListener('mouseleave', () => {
+        clearInterval(timer)
+        countdownDiv.innerText = '0'
+    })
+})
 
-const hoverCount = document.getElementById('div5');
-hoverCount.addEventListener('mouseenter', startCountdown);
 
-// 10. optional
+// 10 - extra
+
+const input = document.querySelector('input')
+const output : HTMLParagraphElement = document.querySelector('.inputs__output')
+
+input.addEventListener('input', () => {
+    output.innerText = input.value;
+})

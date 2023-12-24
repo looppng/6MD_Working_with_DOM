@@ -12,28 +12,29 @@
 <body>
     <div class="container">
         <div class="btn-container">
-            <button class="btn btn1" id="btn1">Button 1</button>
-            <button class="btn btn2" id="btn2">Button 2</button>
-            <button class="btn btn3" id="btn3">Button 3</button>
-            <button class="btn btn4" id="btn4">Button 4</button>
-            <button class="btn btn5" id="btn5">Button 5</button>
-            <button class="btn btn6" id="btn6">Button 6</button>
+            <button class="btn button1">Button 1</button>
+            <button class="btn button2">Button 2</button>
+            <button class="btn button3">Button 3</button>
+            <button class="btn button4">Button 4</button>
+            <button class="btn button5">Button 5</button>
+            <button class="btn button6">Button 6</button>
         </div>
         <div class="div-container">
-            <div class="div div1" id="div1"></div>
-            <div class="div div2" id="div2">FAIL</div>
-            <div class="div div3" id="div3"></div>
-            <div class="div div4" id="div4"></div>
-            <div class="div div5" id="div5">0</div>
-            <div class="div div6" id="div6">0</div>    
+            <div class="div div1"></div>
+            <div class="div div2">FAIL</div>
+            <div class="div div3"></div>
+            <div class="div div4"></div>
+            <div class="div div5">0</div>
+            <div class="div div6">0</div>
         </div>
         <div class="input-container">
-            <button class="btn btn7" id="btn7">Button 7</button>
-            <form name="myForm" action="/action_page.php" method="post">
-                <input type="text" name="text" id="copiedText" placeholder="placeholder text" onchange="copyText()">
+            <button class="btn button7">Button 7</button>
+            <form>
+                <label for="inputText">
+                    <input type="text" id="inputText" name="inputText" placeholder="Your input here..." onchange="">
+                </label>
             </form>
-        
-            <div class="div div7" id="div7"></div>
+            <p class="inputs__output"></p>
         </div>
     </div>
     <script src="/scripts.js"></script>
